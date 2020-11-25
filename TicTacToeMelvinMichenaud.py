@@ -1,6 +1,3 @@
-grille = [0, 0, 0, 0, 0, 0, 0, 0, 0,]
-joueur = "X"
-tour = 0
 #fonctions
 def initialiseGrille(grille):
     for compteur in range(0,9):
@@ -63,6 +60,10 @@ def testJeuNul(tour, victoire):
     return(finJeu)
 
 #debut programme
+grille = [0, 0, 0, 0, 0, 0, 0, 0, 0,]
+joueur = "X"
+tour = 0
+finJeu = False
 
 initialiseGrille(grille)
 while finJeu != True:
@@ -79,9 +80,5 @@ while finJeu != True:
     
     finJeu = testJeuNul(tour, victoire)
     tour = tour + 1
-    
-
-
-print(victoire)
 
 input()
