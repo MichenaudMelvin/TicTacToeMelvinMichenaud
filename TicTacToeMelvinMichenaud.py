@@ -1,6 +1,6 @@
 grille = [0, 0, 0, 0, 0, 0, 0, 0, 0,]
 joueur = "X"
-
+tour = 0
 #fonctions
 def initialiseGrille(grille):
     for compteur in range(0,9):
@@ -26,45 +26,60 @@ def testVictoireVerticale(grille):
     while compteur < 3:
         if grille[compteur] != "_" and grille[compteur] == grille[compteur+3] and grille[compteur] == grille[compteur+6]:
             victoire = True
+            finJeu = True
         else:
             victoire = False
+            finJeu = False
         compteur = compteur+1
-    return(victoire)
+    return(victoire, finJeu)
 
 def testVictoireHorizontale(grille):
     compteur = 0
     while compteur < 3:
         if grille[compteur] != "_" and grille[compteur*3] == grille[compteur*3+1] and grille[compteur*3] == grille[compteur*3+2]:
             victoire = True
+            finJeu = True
         else:
             victoire = False
+            finJeu = False
         compteur = compteur+1
-    return(victoire)
+    return(victoire, finJeu)
 
 def testVictoireDiagonale(grille):
     if grille[4] != "_":
         if grille[4] == grille[0] == grille[8] or grille[4] == grille[2] == grille[6]:
             victoire = True
+            finJeu = True
         else:
             victoire = False
-    return(victoire)
+            finJeu = False
+    return(victoire, finJeu)
 
 def testJeuNul(tour, victoire):
     if tour == 9 and victoire == False:
         finJeu = True
+    else:
+        finJeu = False
     return(finJeu)
 
 #debut programme
 
 initialiseGrille(grille)
-afficheGrille(grille)
-ajouteSymbole(grille, joueur)
-afficheGrille(grille)
-ajouteSymbole(grille, joueur)
-afficheGrille(grille)
-ajouteSymbole(grille, joueur)
-afficheGrille(grille)
-victoire = testVictoireDiagonale(grille)
+while finJeu != True:
+    afficheGrille(grille)
+    ajouteSymbole(grille, joueur)
+    victoire = testVictoireVerticale(grille)[0]
+    finJeu = testVictoireVerticale(grille)[1]
+    
+    victoire = testVictoireHorizontale(grille)[0]
+    finJeu = testVictoireHorizontale(grille)[1]
+    
+    victoire = testVictoireDiagonale(grille)[0]
+    finJeu = testVictoireDiagonale(grille)[1]
+    
+    finJeu = testJeuNul(tour, victoire)
+    tour = tour + 1
+    
 
 
 print(victoire)
