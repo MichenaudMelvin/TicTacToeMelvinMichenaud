@@ -53,7 +53,7 @@ def testVictoireDiagonale(grille):
     return(victoire, finJeu)
 
 def testJeuNul(tour, victoire):
-    if tour == 9 and victoire == False:
+    if tour == 8 and victoire == False:
         finJeu = True
     else:
         finJeu = False
@@ -66,19 +66,24 @@ tour = 0
 finJeu = False
 
 initialiseGrille(grille)
-while finJeu != True:
+while finJeu != True or victoire == True:
     afficheGrille(grille)
     ajouteSymbole(grille, joueur)
     victoire = testVictoireVerticale(grille)[0]
     finJeu = testVictoireVerticale(grille)[1]
+    print(victoire)
     
     victoire = testVictoireHorizontale(grille)[0]
     finJeu = testVictoireHorizontale(grille)[1]
+    print(victoire)
     
     victoire = testVictoireDiagonale(grille)[0]
     finJeu = testVictoireDiagonale(grille)[1]
+    print(victoire)
     
     finJeu = testJeuNul(tour, victoire)
     tour = tour + 1
+    print(tour)
 
+print('sortie de la boucle')
 input()
