@@ -39,7 +39,17 @@ def testVictoireHorizontale(grille):
             victoire = False
         compteur = compteur+1
     return(victoire)
-    
+
+def testVictoireDiagonale(grille):
+    compteur = 0
+    if grille[4] == grille[0] and grille[4] == grille[8]:
+        victoire = True
+    if grille[4] == grille[2] and grille[4] == grille[6]:
+        victoire = True
+    else:
+        victoire = False
+    return(victoire)
+
 initialiseGrille(grille)
 afficheGrille(grille)
 ajouteSymbole(grille, joueur)
@@ -48,7 +58,7 @@ ajouteSymbole(grille, joueur)
 afficheGrille(grille)
 ajouteSymbole(grille, joueur)
 afficheGrille(grille)
-victoire = testVictoireHorizontale(grille)
+victoire = testVictoireDiagonale(grille)
 print(victoire)
 
 input()
