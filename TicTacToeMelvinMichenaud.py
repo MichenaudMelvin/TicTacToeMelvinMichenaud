@@ -1,6 +1,7 @@
 grille = [0, 0, 0, 0, 0, 0, 0, 0, 0,]
 joueur = "X"
 
+#fonctions
 def initialiseGrille(grille):
     for compteur in range(0,9):
         grille[compteur] = "_"
@@ -48,6 +49,13 @@ def testVictoireDiagonale(grille):
             victoire = False
     return(victoire)
 
+def testJeuNul(tour, victoire):
+    if tour == 9 and victoire == False:
+        finJeu = True
+    return(finJeu)
+
+#debut programme
+
 initialiseGrille(grille)
 afficheGrille(grille)
 ajouteSymbole(grille, joueur)
@@ -57,6 +65,8 @@ afficheGrille(grille)
 ajouteSymbole(grille, joueur)
 afficheGrille(grille)
 victoire = testVictoireDiagonale(grille)
+
+
 print(victoire)
 
 input()
