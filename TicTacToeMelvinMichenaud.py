@@ -29,10 +29,17 @@ def testVictoireVerticale(grille):
             victoire = False
         compteur = compteur+1
     return(victoire)
-"""
-def testVictoireHorizontale(grille):
-"""
 
+def testVictoireHorizontale(grille):
+    compteur = 0
+    while compteur < 3:
+        if grille[compteur] != "_" and grille[compteur*3] == grille[compteur*3+1] and grille[compteur*3] == grille[compteur*3+2]:
+            victoire = True
+        else:
+            victoire = False
+        compteur = compteur+1
+    return(victoire)
+    
 initialiseGrille(grille)
 afficheGrille(grille)
 ajouteSymbole(grille, joueur)
@@ -41,7 +48,7 @@ ajouteSymbole(grille, joueur)
 afficheGrille(grille)
 ajouteSymbole(grille, joueur)
 afficheGrille(grille)
-victoire = testVictoireVerticale(grille)
+victoire = testVictoireHorizontale(grille)
 print(victoire)
 
 input()
