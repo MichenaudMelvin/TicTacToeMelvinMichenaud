@@ -1,6 +1,5 @@
 grille = [0, 0, 0, 0, 0, 0, 0, 0, 0,]
 joueur = "X"
-victoire = False
 
 def initialiseGrille(grille):
     for compteur in range(0,9):
@@ -21,14 +20,18 @@ def ajouteSymbole(grille, joueur):
         if i >= 3 or j >= 3:
             print("veuillez saisir un chiffre entre 0 et 2")
 
-def testVictoireVerticale(grille, victoire):
+def testVictoireVerticale(grille):
     compteur = 0
-    for compteur in range (0,3):
+    while compteur < 3:
         if grille[compteur] != "_" and grille[compteur] == grille[compteur+3] and grille[compteur] == grille[compteur+6]:
             victoire = True
         else:
             victoire = False
+        compteur = compteur+1
     return(victoire)
+"""
+def testVictoireHorizontale(grille):
+"""
 
 initialiseGrille(grille)
 afficheGrille(grille)
@@ -38,9 +41,7 @@ ajouteSymbole(grille, joueur)
 afficheGrille(grille)
 ajouteSymbole(grille, joueur)
 afficheGrille(grille)
-ajouteSymbole(grille, joueur)
-afficheGrille(grille)
-testVictoireVerticale(grille)
+victoire = testVictoireVerticale(grille)
 print(victoire)
 
 input()
