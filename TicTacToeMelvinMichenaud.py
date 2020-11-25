@@ -41,7 +41,6 @@ def testVictoireHorizontale(grille):
     return(victoire)
 
 def testVictoireDiagonale(grille):
-    compteur = 0
     if grille[4] != "_":
         if grille[4] == grille[0] == grille[8] or grille[4] == grille[2] == grille[6]:
             victoire = True
