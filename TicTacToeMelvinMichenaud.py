@@ -18,76 +18,70 @@ def ajouteSymbole(grille, joueur):
         if i >= 3 or j >= 3:
             print("veuillez saisir un chiffre entre 0 et 2")
 
-def testVictoireVerticale(grille, finJeu):
+def testVictoireVerticale(grille):
     compteur = 0
     while compteur < 3:
         if grille[compteur] != "_" and grille[compteur] == grille[compteur+3] and grille[compteur] == grille[compteur+6]:
             victoire = True
-            finJeu = True
         else:
             victoire = False
-            finJeu = False
         compteur = compteur+1
-    return(victoire, finJeu)
+    return(victoire)
 
-def testVictoireHorizontale(grille, finJeu):
+def testVictoireHorizontale(grille):
     compteur = 0
     while compteur < 3:
         if grille[compteur] != "_" and grille[compteur*3] == grille[compteur*3+1] and grille[compteur*3] == grille[compteur*3+2]:
             victoire = True
-            finJeu = True
         else:
             victoire = False
-            finJeu = False
         compteur = compteur+1
-    return(victoire, finJeu)
+    return(victoire)
 
-def testVictoireDiagonale(grille, finJeu):
+def testVictoireDiagonale(grille):
+    victoire = 0
     if grille[4] != "_":
-        if grille[4] == grille[0] == grille[8] or grille[4] == grille[2] == grille[6]:
+        if grille[4] == grille[0] and grille[4] == grille[8]:
             victoire = True
-            finJeu = True
-        else:
-            victoire = False
-            finJeu = False
-    print(victoire)
-    return(victoire, finJeu)
-
-def testJeuNul(tour, finJeu):
-    if tour == 8 and victoire == False:
-        finJeu = True
+        if grille[4] == grille[2] and grille[4] == grille[6]:
+            victoire = True
     else:
-        finJeu = False
-    return(finJeu)
+        victoire = False
+    return(victoire)
+
+def testJeuNul(tour):
+    if tour == 8 and victoire == False:
+        victoire = True
+    else:
+        victoire = False
+    return(victoire)
 
 #debut programme
 grille = [0, 0, 0, 0, 0, 0, 0, 0, 0,]
 joueur = "X"
 tour = 0
-finJeu = False
-victoire = 0
-victoire1 = False
-victoire2 = False
-victoire3 = False
+victoire = False
 
 initialiseGrille(grille)
-while finJeu != True or victoire1 == True or victoire2 == True or victoire3 == True:
+while victoire != True:
     afficheGrille(grille)
     ajouteSymbole(grille, joueur)
     
-    victoire1 = testVictoireVerticale(grille, finJeu)[0]
-    finJeu = testVictoireVerticale(grille, finJeu)[1]
-    print(victoire1)
+    victoire = testVictoireVerticale(grille)
+    print("victoire 1 =",victoire)
     
-    victoire2 = testVictoireHorizontale(grille, finJeu)[0]
-    finJeu = testVictoireHorizontale(grille, finJeu)[1]
-    print(victoire2)
+    victoire = testVictoireHorizontale(grille)
+    print("victoire 2 =",victoire)
     
-    victoire3 = testVictoireDiagonale(grille, finJeu)[0]
-    finJeu = testVictoireDiagonale(grille, finJeu)[1]
-    print(victoire3)
+    victoire = testVictoireDiagonale(grille)
+    print("victoire 3 =",victoire)
     
-    finJeu = testJeuNul(tour, finJeu)
+    victoire = testJeuNul(tour)
+    
+    if joueur == "X":
+        joueur = "O"
+    else:
+        joueur = "X"
     tour = tour + 1
     print(tour)
 
