@@ -49,8 +49,8 @@ def testVictoireDiagonale(grille):
         victoire = False
     return(victoire)
 
-def testJeuNul(tour):
-    if tour == 8 and victoire == False:
+def testJeuNul(tour, victoire):
+    if tour == 8:
         victoire = True
     else:
         victoire = False
@@ -76,7 +76,7 @@ while victoire != True:
     victoire = testVictoireDiagonale(grille)
     print("victoire 3 =",victoire)
     
-    victoire = testJeuNul(tour)
+    victoire = testJeuNul(tour, victoire)
     
     if joueur == "X":
         joueur = "O"
@@ -85,5 +85,6 @@ while victoire != True:
     tour = tour + 1
     print(tour)
 
+afficheGrill(grille)
 print('sortie de la boucle')
 input()
