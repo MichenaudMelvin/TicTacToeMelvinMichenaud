@@ -61,30 +61,28 @@ grille = [0, 0, 0, 0, 0, 0, 0, 0, 0,]
 joueur = "X"
 tour = 0
 victoire = False
+victoire1 = False
+victoire2 = False
+victoire3 = False
+victoire4 = False
 
 initialiseGrille(grille)
-while victoire != True:
+while victoire1 == False and victoire2 == False and victoire3 == False and victoire4 == False:
     afficheGrille(grille)
     ajouteSymbole(grille, joueur)
     
-    victoire = testVictoireVerticale(grille)
-    print("victoire 1 =",victoire)
-    
-    victoire = testVictoireHorizontale(grille)
-    print("victoire 2 =",victoire)
-    
-    victoire = testVictoireDiagonale(grille)
-    print("victoire 3 =",victoire)
-    
-    victoire = testJeuNul(tour, victoire)
+    victoire1 = testVictoireVerticale(grille)
+    victoire2 = testVictoireHorizontale(grille)
+    victoire3 = testVictoireDiagonale(grille)
+    victoire4 = testJeuNul(tour, victoire)
     
     if joueur == "X":
         joueur = "O"
     else:
         joueur = "X"
     tour = tour + 1
-    print(tour)
+    print("Tour n °",tour)
 
-afficheGrill(grille)
+afficheGrille(grille)
 print('sortie de la boucle')
 input()
